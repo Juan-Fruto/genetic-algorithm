@@ -77,7 +77,6 @@ public class GeneticAlgorithm {
         int fitnessSum = this.chromosomes.stream()
                 .mapToInt(Chromosome::getFitness)
                 .sum();
-        int smallestFitness = this.getSmallestFitness();
 
         for(int i = 0; i < this.chromosomes.size(); i++){
             int randomValue = this.random.nextInt(fitnessSum);
@@ -94,17 +93,6 @@ public class GeneticAlgorithm {
 
         this.chromosomes = newPopulation;
 
-    }
-
-    private int getSmallestFitness(){
-        int smallest = this.chromosomes.getFirst().getFitness();
-        for(int i = 1; i < this.chromosomes.size(); i++){
-            int currentFitness = this.chromosomes.get(i).getFitness();
-            if(currentFitness < smallest){
-                smallest = currentFitness;
-            }
-        }
-        return smallest;
     }
 
     @Override
